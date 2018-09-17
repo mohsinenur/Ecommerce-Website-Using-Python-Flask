@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <!-- /.col-lg-3 -->
+        <div class="col-lg-12">
+            {% include 'includes/_flashmsg.html' %}
+            <div class="row">
+                {% for product in products %}
+                {% include 'modal_viewproduct.html' %}
+                {% include 'modal_order.html' %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card mb-4">
+                        <a href="javascript:void();">
+                            <div class="card-img-top" id="{{product.id}}"
+                                 style="background: url('static/image/product/{{product.item}}/{{product.picture}}'); background-repeat:no-repeat; background-size: cover; height:200px;width:100% "></div>
+                        </a>
+                        <div class="card-body">
+                            <h3><a class="card-title" id="" href="javascript:void();">{{ product.pName}}</a></h3>
+                            <h4>$24.99</h4>
+                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                            4.0 stars
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- /.col-lg-9 -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+{% endblock %}

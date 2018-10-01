@@ -1,0 +1,53 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <h1 class="my-4">{{session.s_name}}</h1>
+            <div class="list-group">
+                <a href="/profile?user={{session.uid}}" class="list-group-item">Order List</a>
+                <a href="/settings?user={{session.uid}}" class="list-group-item">Settings</a>
+            </div>
+        </div>
+        <!-- /.col-lg-3 -->
+        <div class="col-lg-9">
+            {% include 'includes/_flashmsg.html' %}
+            <div class="card card-default my-4">
+                <div class="card-header">
+                    <i class="fa fa-bar-chart-o fa-fw"></i>Update profile info
+                </div>
+                <!-- /.panel-heading -->
+                <div class="card-body">
+                    {% if result %}
+                    {% from "includes/_formhelpers.html" import render_field %}
+                    <form method="POST" action="/settings?user={{result.id}}">
+                        <div class="form-group">
+                            {{render_field(form.name, class_="form-control", value=result.name)}}
+                        </div>
+                        <div class="form-group">
+                            {{render_field(form.email, class="form-control", value=result.email)}}
+                        </div>
+                        <div class="form-group">
+                            {{render_field(form.password, class="form-control")}}
+                        </div>
+                        <div class="form-group">
+                            {{render_field(form.mobile, class="form-control", value=result.mobile)}}
+                        </div>
+                        <p>
+                            <input type="submit" class="btn btn-primary" value="Update Settings">
+                        </p>
+                    </form>
+                    {% endif%}
+                </div>
+                <!-- /.panel-body -->
+            </div>
+        </div>
+        <!-- /.col-lg-9 -->
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+{% endblock %}

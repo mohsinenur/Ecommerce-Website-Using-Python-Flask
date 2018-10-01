@@ -13,7 +13,7 @@
                 </ol>
                 <div class="carousel-inner" role="listbox" style="max-height: 300px">
                     <div class="carousel-item active">
-                        <img class="d-block img-fluid" src="/static/image/watchwallpaper.jpg" alt="New York"
+                        <img class="d-block img-fluid" src="/static/image/other/watchwallpaper.jpg" alt="New York"
                              width="1100" height="300">
                         <div class="carousel-caption">
                             <h3>Los Angeles</h3>
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="/static/image/bodyspray.jpg" alt="New York" width="1100"
+                        <img class="d-block img-fluid" src="/static/image/other/bodyspray.jpg" alt="New York" width="1100"
                              height="300">
                         <div class="carousel-caption">
                             <h3>Los Angeles</h3>
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block img-fluid" src="/static/image/t-shirt-wallpaper.jpg" alt="New York"
+                        <img class="d-block img-fluid" src="/static/image/other/t-shirt-wallpaper.jpg" alt="New York"
                              width="1100" height="300">
                         <div class="carousel-caption">
                             <h3>Los Angeles</h3>
@@ -46,135 +46,44 @@
                     <span class="sr-only">Next</span>
                 </a>
             </div>
-            <h3>Todays recommend for you...</h3>
+            <h3><a href="/tshirt">T-Shirt</a></h3>
             <div class="row">
-                <div class="col-lg-3">
+                {% for product in tshirt %}
+                {% if product.category == 'tshirt' %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="card mb-4">
-                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+                        <a href="/{{product.category}}?view={{product.id}}">
+                            <div class="card-img-top id_{{product.id}}"
+                                 style="background: url('static/image/product/{{product.category}}/{{product.picture}}'); background-repeat:no-repeat; background-size: cover; height:200px;width:100% "></div>
+                        </a>
                         <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h4>$24.99</h4>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                            4.0 stars
+                            <h5><a class="card-title" href="javascript:void();">{{ product.pName}}</a></h5>
+                            <h4>৳{{product.price}}</h4>
+                            <span class="text-warning"></span>
                         </div>
                     </div>
                     <!-- /.card -->
                 </div>
-                <div class="col-lg-3">
-
-                    <div class="card mb-4">
-                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-                        <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h4>$24.99</h4>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                            4.0 stars
-                        </div>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <div class="col-lg-3">
-
-                    <div class="card mb-4">
-                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-                        <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h4>$24.99</h4>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                            4.0 stars
-                        </div>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <div class="col-lg-3">
-
-                    <div class="card mb-4">
-                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-                        <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h4>$24.99</h4>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                            4.0 stars
-                        </div>
-                    </div>
-                    <!-- /.card -->
-                </div>
-            </div>
-            <h3><a href="/mens">Mens World</a></h3>
-            <div class="row">
-                <div class="col-lg-3">
-
-                    <div class="card mb-4">
-                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-                        <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h4>$24.99</h4>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                            4.0 stars
-                        </div>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <div class="col-lg-3">
-
-                    <div class="card mb-4">
-                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-                        <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h4>$24.99</h4>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                            4.0 stars
-                        </div>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <div class="col-lg-3">
-
-                    <div class="card mb-4">
-                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-                        <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h4>$24.99</h4>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                            4.0 stars
-                        </div>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <div class="col-lg-3">
-
-                    <div class="card mb-4">
-                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-                        <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h4>$24.99</h4>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                            4.0 stars
-                        </div>
-                    </div>
-                    <!-- /.card -->
-                </div>
+                {% endif %}
+                {% endfor %}
             </div>
             <!-- /.row -->
             <div class="border p-4 mb-4" style="height: 350px">
-                <img class="w-100 h-100" src="/static/image/bodyspray.jpg" alt="New York">
+                <img class="w-100 h-100" src="/static/image/other/bodyspray.jpg" alt="New York">
             </div>
-            <h3><a href="/womens">Womens World</a></h3>
+            <h3><a href="/wallet">Wallet</a></h3>
             <div class="row">
-                {% for product in products %}
-                {% include 'modal_viewproduct.html' %}
-                {% include 'modal_order.html' %}
+                {% for product in wallet %}
                 <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="card mb-4">
-                        <a href="javascript:void();">
-                            <div class="card-img-top" id="{{product.id}}"
-                                 style="background: url('static/image/product/{{product.item}}/{{product.picture}}'); background-repeat:no-repeat; background-size: cover; height:200px;width:100% "></div>
+                        <a href="/{{product.category}}?view={{product.id}}">
+                            <div class="card-img-top"
+                                 style="background: url('static/image/product/{{product.category}}/{{product.picture}}'); background-repeat:no-repeat; background-size: cover; height:200px;width:100% "></div>
                         </a>
                         <div class="card-body">
-                            <h3><a class="card-title" id="" href="javascript:void();">{{ product.pName}}</a></h3>
-                            <h4>$24.99</h4>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                            4.0 stars
+                            <h5><a class="card-title" id="" href="/{{product.category}}?view={{product.id}}">{{ product.pName}}</a></h5>
+                            <h4>৳{{product.price}}</h4>
+                            <span class="text-warning"></span>
                         </div>
                     </div>
                     <!-- /.card -->
@@ -183,66 +92,51 @@
             </div>
             <!-- /.row -->
             <div class="border p-4 mb-4" style="height: 350px">
-                <img class="w-100 h-100" src="/static/image/watchwallpaper.jpg" alt="New York">
+                <img class="w-100 h-100" src="/static/image/other/watchwallpaper.jpg" alt="New York">
             </div>
-            <h3><a href="/mens">Babys Item</a></h3>
+            <h3><a href="/belt">Belt</a></h3>
             <div class="row">
-                <div class="col-lg-3">
-
+                {% for product in belt %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
                     <div class="card mb-4">
-                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+                        <a href="/{{product.category}}?view={{product.id}}">
+                            <div class="card-img-top"
+                                 style="background: url('static/image/product/{{product.category}}/{{product.picture}}'); background-repeat:no-repeat; background-size: cover; height:200px;width:100% "></div>
+                        </a>
                         <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h4>$24.99</h4>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                            4.0 stars
+                            <h5><a class="card-title" href="/{{product.category}}?view={{product.id}}">{{ product.pName}}</a></h5>
+                            <h4>৳{{product.price}}</h4>
+                            <span class="text-warning"></span>
                         </div>
                     </div>
                     <!-- /.card -->
                 </div>
-                <div class="col-lg-3">
-
-                    <div class="card mb-4">
-                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-                        <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h4>$24.99</h4>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                            4.0 stars
-                        </div>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <div class="col-lg-3">
-
-                    <div class="card mb-4">
-                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-                        <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h4>$24.99</h4>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                            4.0 stars
-                        </div>
-                    </div>
-                    <!-- /.card -->
-                </div>
-                <div class="col-lg-3">
-
-                    <div class="card mb-4">
-                        <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
-                        <div class="card-body">
-                            <h3 class="card-title">Product Name</h3>
-                            <h4>$24.99</h4>
-                            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-                            4.0 stars
-                        </div>
-                    </div>
-                    <!-- /.card -->
-                </div>
+                {% endfor %}
             </div>
-            <!-- /.row -->
             <div class="border p-4 mb-4" style="height: 350px">
-                <img class="w-100 h-100" src="/static/image/t-shirt-wallpaper.jpg" alt="New York">
+                <img class="w-100 h-100" src="/static/image/other/bodyspray.jpg" alt="New York">
+            </div>
+            <h3><a href="/shoes">Shoes</a></h3>
+            <div class="row">
+                {% for product in shoes %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card mb-4">
+                        <a href="/{{product.category}}?view={{product.id}}">
+                            <div class="card-img-top"
+                                 style="background: url('static/image/product/{{product.category}}/{{product.picture}}'); background-repeat:no-repeat; background-size: cover; height:200px;width:100% "></div>
+                        </a>
+                        <div class="card-body">
+                            <h5><a class="card-title" href="/{{product.category}}?view={{product.id}}">{{ product.pName}}</a></h5>
+                            <h4>৳{{product.price}}</h4>
+                            <span class="text-warning"></span>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                {% endfor %}
+            </div>
+            <div class="border p-4 mb-4" style="height: 350px">
+                <img class="w-100 h-100" src="/static/image/other/t-shirt-wallpaper.jpg" alt="New York">
             </div>
 
         </div>

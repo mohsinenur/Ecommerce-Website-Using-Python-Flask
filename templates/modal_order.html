@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal" id="order_modal{{product.id}}" role="document" style="overflow-y: scroll;">
+<div class="modal order_modal{{product.id}}" role="document" style="overflow-y: scroll;">
     <div class="modal-dialog" style="max-width: 90%; margin: 56px auto;">
         <!-- Modal content-->
         <div class="modal-content">
@@ -9,8 +9,10 @@
 
                         <div class="card mb-4">
                             <img class="card-img-top img-fluid"
-                                 src="static/image/product/{{product.item}}/{{product.picture}}" alt="">
-                            <h4 class="card-title">{{product.pName}}</h4>
+                                 src="static/image/product/{{product.category}}/{{product.picture}}" alt="">
+                            <div class="card-body">
+                                <h4 class="card-title">{{product.pName}}</h4>
+                            </div>
                         </div>
                         <!-- /.card -->
                     </div>
@@ -21,7 +23,7 @@
                             </div>
                             <div class="card-body">
                                 {% from "includes/_formhelpers.html" import render_field %}
-                                <form method="POST" action="/womens">
+                                <form method="POST" action="/tshirt">
                                     <div class="form-group">
                                         {{render_field(form.pid, class_="form-control", value=product.id)}}
                                     </div>
@@ -57,8 +59,8 @@
 
 <script>
 $(document).ready(function(){
-    $("#order_{{product.id}}").click(function(){
-        $("#order_modal{{product.id}}").modal({backdrop: true});
+    $(".order_{{product.id}}").click(function(){
+        $(".order_modal{{product.id}}").modal({backdrop: true});
     });
 });
 

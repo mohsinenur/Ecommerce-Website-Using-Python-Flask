@@ -82,7 +82,7 @@
         <div class="col-lg-12">
             <div class="panel panel-default my-4">
                 <div class="panel-heading">
-                    <i class="fa fa-bar-chart-o fa-fw"></i>All Product List
+                    <i class="fa fa-bar-chart-o fa-fw"></i>All Orders
                 </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -94,36 +94,28 @@
                                     <thead>
                                     <tr>
                                         <th>Id</th>
+                                        <th>User Id</th>
                                         <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Description</th>
-                                        <th>Available</th>
-                                        <th>Category</th>
-                                        <th>Item</th>
-                                        <th>Code</th>
-                                        <th>Picture</th>
+                                        <th>Product Id</th>
+                                        <th>Quantity</th>
+                                        <th>Order Place</th>
+                                        <th>Mobile</th>
+                                        <th>Order Date</th>
+                                        <th>Delivery Date</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {% for product in result %}
                                     <tr>
                                         <td>{{product.id}}</td>
-                                        <td>{{product.pName}}</td>
-                                        <td>{{product.price}}</td>
-                                        <td>{{product.description}}</td>
-                                        <td>{{product.available}}</td>
-                                        <td>{{product.category}}</td>
-                                        <td>{{product.item}}</td>
-                                        <td>{{product.pCode}}</td>
-                                        <td>
-                                            <a href="/edit_product?id={{product.id}}">
-                                                <div class="">
-                                                    <span class="">Edit</span>
-                                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                            </a>
-                                        </td>
+                                        <td>{{product.uid}}</td>
+                                        <td>{{product.ofname}}</td>
+                                        <td>{{product.pid}}</td>
+                                        <td>{{product.quantity}}</td>
+                                        <td>{{product.oplace}}</td>
+                                        <td>{{product.mobile}}</td>
+                                        <td>{{product.odate}}</td>
+                                        <td>{{product.ddate}}</td>
                                     </tr>
                                     {% endfor%}
                                     </tbody>

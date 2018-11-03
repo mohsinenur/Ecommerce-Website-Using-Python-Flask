@@ -1,5 +1,9 @@
 # E-Commerce-Website-Using-Python
 
+## Web View
+Go to this link to view website <br>
+https://menshut.pythonanywhere.com
+
 ## Summary
 Hello friends, This is my first full e-commerce project with Python-Flask. This is free. Anybody can use and moderate this project.
 

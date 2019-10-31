@@ -19,8 +19,8 @@ configure_uploads(app, photos)
 # Config MySQL
 mysql = MySQL()
 app.config['MYSQL_HOST'] = '127.0.0.1'
-app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_USER'] = 'nur'
+app.config['MYSQL_PASSWORD'] = 'secret'
 app.config['MYSQL_DB'] = 'menshut'
 app.config['MYSQL_CURSORCLASS'] = 'DictCursor'
 
@@ -363,7 +363,7 @@ def tshirt():
         x = content_based_filtering(product_id)
         wrappered = wrappers(content_based_filtering, product_id)
         execution_time = timeit.timeit(wrappered, number=0)
-        print('Execution time: ' + str(execution_time) + ' usec')
+        # print('Execution time: ' + str(execution_time) + ' usec')
         if 'uid' in session:
             uid = session['uid']
             # Create cursor
@@ -743,9 +743,7 @@ def edit_product():
         curso.execute("SELECT * FROM product_level WHERE product_id=%s", (product_id,))
         product_level = curso.fetchall()
         if res:
-            print('res')
             if request.method == 'POST':
-                print('post')
                 name = request.form.get('name')
                 price = request.form['price']
                 description = request.form['description']
@@ -758,16 +756,16 @@ def edit_product():
                 if name and price and description and available and category and item and code and file:
                     pic = file.filename
                     photo = pic.replace("'", "")
-                    picture = photo.replace(" ", "_")
+                    picture = photo.replace(" ", "")
                     if picture.lower().endswith(('.png', '.jpg', '.jpeg')):
+                        file.filename = picture
                         save_photo = photos.save(file, folder=category)
                         if save_photo:
                             # Create Cursor
                             cur = mysql.connection.cursor()
                             exe = curso.execute(
                                 "UPDATE products SET pName=%s, price=%s, description=%s, available=%s, category=%s, item=%s, pCode=%s, picture=%s WHERE id=%s",
-                                (name, price, description, available, category, item, code, pic, product_id))
-                            print(exe)
+                                (name, price, description, available, category, item, code, picture, product_id))
                             if exe:
                                 if category == 'tshirt':
                                     level = request.form.getlist('tshirt')
@@ -815,18 +813,17 @@ def edit_product():
                                 return redirect(url_for('edit_product'))
                         else:
                             flash('Pic not upload', 'danger')
-                            return render_template('edit_product.html', product=product,
+                            return render_template('pages/edit_product.html', product=product,
                                                    product_level=product_level)
                     else:
                         flash('File not support', 'danger')
-                        return render_template('edit_product.html', product=product,
+                        return render_template('pages/edit_product.html', product=product,
                                                product_level=product_level)
                 else:
                     flash('Fill all field', 'danger')
-                    return render_template('edit_product.html', product=product,
+                    return render_template('pages/edit_product.html', product=product,
                                            product_level=product_level)
             else:
-                print('get')
                 return render_template('pages/edit_product.html', product=product, product_level=product_level)
         else:
             return redirect(url_for('admin_login'))

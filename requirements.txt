@@ -9,5 +9,5 @@ Jinja2==2.10.1
 MarkupSafe==1.1.1
 mysqlclient==1.4.2.post1
 passlib==1.7.1
-Werkzeug==0.15.2
+Werkzeug==0.15.3
 WTForms==2.2.1

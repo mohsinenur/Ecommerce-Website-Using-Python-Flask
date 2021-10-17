@@ -923,7 +923,7 @@ def settings():
         return redirect(url_for('login'))
 
 
-class DeveloperForm(Form):  #
+class DeveloperForm(Form): 
     id = StringField('', [validators.length(min=1)],
                      render_kw={'placeholder': 'Input a product id...'})
 

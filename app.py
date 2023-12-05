@@ -254,6 +254,7 @@ def shoes():
         curso.execute("SELECT * FROM products WHERE id=%s", (product_id,))
         product = curso.fetchall()
         x = content_based_filtering(product_id)
+        # getting all content
         return render_template('order_product.html', x=x, tshirts=product, form=form)
     return render_template('shoes.html', shoes=products, form=form)
 

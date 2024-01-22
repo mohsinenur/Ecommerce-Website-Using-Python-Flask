@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block body %}
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <!-- /.card -->
+        <div class="col-lg-12">
+            <div class="card card-outline-secondary my-4">
+                <div class="card-header">
+                    Recommendation Performance
+                </div>
+                <div class="card-body">
+                    {% from "includes/_formhelpers.html" import render_field %}
+                    <form method="POST" action="/developer">
+                        <div class="form-group">
+                            {{render_field(form.id, class_="form-control")}}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Get Result</button>
+                    </form>
+                </div>
+                {% if x %}
+                <div class="card-footer">
+                    <h2>Showing Results For : <span class="text-success"> Product Id {{x[3]}}</span></h2>
+                    <h2>Same Category Matched : <span class="text-primary"> {{x[2]}} Products</span></h2>
+                    <h2>Recommend Product Id List : <span class="text-warning"> {{x[1]}}</span></h2>
+                    <h2>Execution Time : <span class="text-info"> {{execution_time}} Second</span></h2>
+                </div>
+                {% else %}
+                    {% if nothing %}
+                    <div class="card-footer">
+                        <h2>Nothing Found</h2>
+                    </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container -->
+{% endblock %}

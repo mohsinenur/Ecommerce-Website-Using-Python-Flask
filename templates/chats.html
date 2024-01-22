@@ -1,0 +1,16 @@
+
+{% for message in chats %}
+    {% if (message.msg_by or message.msg_to) != session.uid %}
+        <div class="" style="text-align:right; padding:2px 5px;">
+            <p>
+                <span class="" style="background-color: #28a7ab;color: #fff;margin: 1px 0;padding: 6px 12px; border-radius: 12px;"> {{message.body}}</span>
+            </p>
+        </div>
+    {% else %}
+        <div class="" style="text-align:left; padding:2px 5px;">
+            <p>
+                <span class="" style="background-color: #dd92b2;color: #fff;margin: 1px 0;padding: 6px 12px; border-radius: 12px;"> {{message.body}}</span>
+            </p>
+        </div>
+    {% endif %}
+{% endfor %}

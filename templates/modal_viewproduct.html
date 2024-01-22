@@ -1,0 +1,71 @@
+<!-- Modal -->
+<div class="modal modal{{product.id}}" role="document">
+    <div class="modal-dialog" style="max-width: 90%; margin: 56px auto;">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-6">
+
+                        <div class="card mb-4">
+                            <img class="card-img-top img-fluid"
+                                 src="static/image/product/{{product.category}}/{{product.picture}}" alt="">
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card card-outline-secondary">
+                            <div class="card-header">
+                                Product Details
+                            </div>
+                            <div class="card-body">
+                                <div class="card-body">
+                                    <h3 class="card-title">{{product.pName}}</h3>
+                                    <h4>{{product.price}} Taka</h4>
+                                    <p class="card-text">{{product.description}}</p>
+                                    <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                                    4.0 stars
+                                </div>
+                                <hr>
+                                <button type="button" class="btn btn-success order_{{product.id}}"
+                                        data-dismiss="modal">Order Now
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <h2 class="mb-4">Recommended for you:</h2>
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="card mb-4">
+                            <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
+                            <div class="card-body">
+                                <h3 class="card-title">Product Name</h3>
+                                <h4>$24.99</h4>
+                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur sint aperiam
+                                    sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
+                                <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
+                                4.0 stars
+                            </div>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+$(document).ready(function(){
+    $(".id_{{product.id}}").click(function(){
+        $(".modal{{product.id}}").modal({backdrop: true});
+    });
+});
+
+</script>

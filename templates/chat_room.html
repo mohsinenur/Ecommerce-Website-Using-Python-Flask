@@ -1,0 +1,70 @@
+{% extends 'layout.html' %}
+{% block body %}
+<script>
+    function ajax(){
+
+    var req = new XMLHttpRequest();
+    req.onreadystatechange = function(){
+    if(req.readyState == 4 && req.status == 200)
+    {
+    document.getElementById('chats').innerHTML = req.responseText;
+    }
+    }
+    req.open('POST', '/chats', true);
+    req.send();
+    }
+    setInterval(function(){ajax()}, 1000);
+</script>
+<div class="row" onload="ajax();">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-4" style="background-color: #f5f5f5;margin: 0px 10px;border-radius: 4px; padding: 10px 20px 20px 20px;">
+        <div style="text-align: center;font-size: 18px;background-color: #ddd;border-radius: 4px;color: #5e5fa4;margin-bottom: 8px;">
+            <span>Users Chart</span>
+        </div>
+        <ul class="list-group">
+            {% for user in users %}
+                {% if user.id != session.uid %}
+                    <li class="list-group-item"><a href="{{user.id}}"> {{user.name}} </a>
+                        {% if user.online != "0" %}
+                            <span style="height: 12px;width: 12px;background-color: #1fc124;border-radius: 6px;
+                            float: right;margin-top: 5px;"></span>
+                        {% else %}
+                            <span style="height: 12px;width: 12px;background-color: #8a8a8a;border-radius: 6px;
+                            float: right;margin-top: 5px;"></span>
+                        {% endif %}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col-xs-6" style="background-color: #f5f5f5;margin: 0px 10px;border-radius: 4px; padding: 10px 20px 20px 20px;">
+
+        {% if session.lid %}
+            {% if session.name != session.s_name %}
+                <div style="text-align: center;font-size: 18px; color: #22aa45;background-color: #ddd;border-radius: 4px;">
+                    <span>{{ session.name}}</span>
+                </div>
+                <div id="chat-box" style="overflow-y: scroll; height: 350px; padding: 10px 0px 0px 0px;">
+                    <div id="chats"></div>
+                </div>
+                {% from "includes/_formhelpers.html" import render_field %}
+                <div>
+                    <form method="POST" action="">
+                    <div class="form-group">
+                        {{render_field(form.body, class_="form-control", value="", placeholder="Enter your text...")}}
+                    </div>
+                    <button type="submit" class="btn btn-primary pull-right">Send</button>
+                    </form>
+                </div>
+            {% else %}
+                <div style="text-align: center;">
+                    <h1>Welcome to Chat Room</h1>
+                    <p class="lead">Select users and start chat...</p>
+                </div>
+            {% endif %}
+        {% endif %}
+
+    </div>
+    <div class="col-xs-1"></div>
+</div>
+{% endblock %}
